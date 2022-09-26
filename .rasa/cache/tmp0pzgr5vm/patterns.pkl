@@ -1,0 +1,42 @@
+[
+  {
+    "name": "function",
+    "pattern": ".*共同討論.*"
+  },
+  {
+    "name": "function",
+    "pattern": ".*引導式.*"
+  },
+  {
+    "name": "function",
+    "pattern": ".*錯誤訊息.*"
+  },
+  {
+    "name": "function",
+    "pattern": "\\b共同討論\\b"
+  },
+  {
+    "name": "function",
+    "pattern": "\\b引導式\\b"
+  },
+  {
+    "name": "function",
+    "pattern": "\\b錯誤訊息\\b"
+  },
+  {
+    "name": "keywords",
+    "pattern": "keywords .*"
+  },
+  {
+    "name": "question_or_error_message",
+    "pattern": "question_or_error_message .*"
+  },
+  {
+    "name": "os",
+    "pattern": "(\\bmac_OS作業系統\\b|\\bwindows作業系統\\b|\\blinux作業系統\\b)"
+  },
+  {
+    "name": "pl",
+    "pattern": "(\\bpython程式語言\\b|\\bjava程式語言\\b|\\bc語言程式語言\\b)"
+  }
+]

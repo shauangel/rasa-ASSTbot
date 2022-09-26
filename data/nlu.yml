@@ -1,0 +1,120 @@
+version: "3.1"
+
+# 用slot filling 來記住使用者選擇的功能
+#- lookup: function
+#  examples: |
+#   - 引導式問答
+#   - guided_QA
+#   - 錯誤訊息解答
+#   - error_message
+#   - 共同討論
+
+nlu:
+- regex: keywords
+  examples: |
+   - keywords .*
+   
+- regex: function
+  examples: |
+   - \b引導式\b
+   - .*引導式.*
+   - \b錯誤訊息\b
+   - .*錯誤訊息.*
+   - \b共同討論\b
+   - .*共同討論.*
+
+   
+- lookup: os
+  examples: |
+   - mac_OS作業系統
+   - windows作業系統
+   - linux作業系統
+   
+- lookup: pl
+  examples: |
+   - python程式語言
+   - java程式語言
+   - c語言程式語言
+   
+- regex: question_or_error_message
+  examples: |
+   - question_or_error_message .*
+
+- intent: start
+  examples: |
+   - start
+
+- intent: say_function
+  examples: |
+    - [引導式](function)
+
+- intent: say_os
+  examples: |
+    - I'm use [mac OS](os)
+    - 我是用[mac os](os)
+    - [mac os](os)
+    
+- intent: change_os
+  examples: |
+    - 我要修改作業系統
+
+- intent: say_pl
+  examples: |
+    - I'm use [python](pl)
+    - 我是用[python](pl)
+    - [python](pl)
+    
+- intent: change_pl
+  examples: |
+    - 我要修改程式語言
+    
+- intent: say_question_or_error_message
+  examples: |
+    - [my error message is: ...](question_or_error_message)
+    
+- intent: say_keywords
+  examples: |
+    - [my keywords is: ...](keywords)
+    
+- intent: affirm
+  examples: |
+    - continue search
+    - 繼續
+    - satisfied
+    - 好
+    - 是
+    - 要
+    - ok
+    - 可以
+    - 對
+    - 確定
+    - 有
+    - 滿意
+
+- intent: deny
+  examples: |
+    - not continue search
+    - 停止
+    - not satisfied
+    - 不滿意
+    - 不要
+    - 不好
+    - not ok
+    - 不可以
+    - 不對
+    - no
+    - 不確定
+    - 沒
+    - 別
+    - 否
+    
+- intent: say_satisfied
+  examples: |
+    - satisfied
+    - 滿意
+    
+- intent: say_not_satisfied
+  examples: |
+    - not satisfied
+    - 不滿意
+

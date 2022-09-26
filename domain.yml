@@ -1,0 +1,145 @@
+version: "3.1"
+
+intents:
+  - start
+  - say_os
+  - change_os
+  - say_pl
+  - change_pl
+  - say_question_or_error_message
+  - say_keywords
+  - affirm
+  - deny
+  - say_satisfied
+  - guided_QA
+  - error_message
+  - discuss_together
+  - say_not_satisfied
+  - say_function
+  ### 用來測試若intent裡有相同的句子 START
+  - test_search
+  - test_satisfied
+  ### 用來測試若intent裡有相同的句子 END
+
+entities:
+  - keywords
+  - question_or_error_message
+  - function
+  - os
+  - pl
+  
+slots:
+  function:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: function
+  os:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: os
+  pl:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: pl
+  question_or_error_message:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: question_or_error_message
+  keywords:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: keywords
+
+responses:
+  utter_detect_stroy:
+  - text: "有進入stroy"
+  utter_affirm_satisfied:
+  - text: "你現在很滿意"
+  
+  utter_affirm_notsatisfied:
+  - text: "你現在「不」滿意"
+  
+  utter_check_function:
+  - text: "您選擇的功能為{function}"
+  
+  utter_ask_func:
+  - text: "請問你想選擇哪個功能呢？"
+  
+  utter_welcome:
+  - text: "我們能提供的功能有<br>1. 錯誤訊息解答（直接複製錯誤訊息即可）<br>2. 引導式問答（用文字描述您遇到的問題）<br>若未能解決問題也可以使用共同討論功能<br><br>請問你想選擇哪個功能呢？"
+  
+  utter_ask_os:
+  - text: "請問您使用的是什麼作業系統？<br>若之後要修改，請輸入「我要更改作業系統」？"
+
+  utter_ask_pl:
+  - text: "請問您使用的是什麼程式語言？<br>若之後要修改，請輸入「我要更改程式語言」？"
+#
+#  utter_ask_message:
+#  - text: "好的，請貼上您的錯誤訊息"
+  
+  utter_check_message:
+  - text: "operation system：{os}\nprograming language：{pl}"
+  
+  utter_check_message_by_os:
+  - text: "這裡是os-----功能：{function}, 作業系統：{os}, 程式語言：{pl}\n錯誤訊息：{question_or_error_message}"
+  
+  utter_check_message_by_os_2:
+  - text: "修改os-----功能：{function}, 作業系統：{os}, 程式語言：{pl}\n錯誤訊息：{question_or_error_message}"
+  
+  utter_check_message_by_pl:
+  - text: "這裡是pl-----功能：{function}, 作業系統：{os}, 程式語言：{pl}\n錯誤訊息：{question_or_error_message}"
+  
+  utter_CORS_problem_answer:
+  - text: "謝謝您的等待，以下為搜尋結果的資料摘要：<br>1. <a href=\"https://stackoverflow.com/questions/48714769/python-flask-cors-importerror-no-module-named-flask-cors-raspberry-pi\">Flask-CORS not working for POST, but working for GET</a><br>2. <a href=\"https://stackoverflow.com/questions/25594893/how-to-enable-cors-in-flask\">Solve Cross Origin Resource Sharing with Flask</a><br>3. <a href=\"https://stackoverflow.com/questions/39550920/flask-cors-not-working-for-post-but-working-for-get\">Flask CORS stopped allowing access to resources</a><br>點選摘要連結可顯示內容。<br><br>是否要繼續搜尋？"
+  
+  utter_ask_question:
+  - text: "好的，請描述您遇到的問題"
+  
+  utter_ask_satisfied:
+  - text: "是否滿意本次體驗？"
+  
+  utter_finish:
+  - text: "感謝回饋，歡迎下次光臨！"
+  
+  
+  utter_goodbye:
+  - text: "Bye"
+  
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+  
+  ### 用來測試若intent裡有相同的句子 START
+  utter_test_search:
+  - text: "觸發的是test_search這個intent"
+  
+  utter_test_satisfied:
+  - text: "觸發的是test_satisfied這個intent"
+  ### 用來測試若intent裡有相同的句子 END
+  
+actions:
+  - fill_slot
+  - analyze_and_search
+  - select_keyword
+  - outer_search
+            
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
