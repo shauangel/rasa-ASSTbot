@@ -335,7 +335,7 @@ class outer_search(Action):
         #拿到所需訊息及最後一句使用者輸入
         print("去外部搜尋了！")
         keywords = tracker.latest_message.get('text')
-        keywords = keywords.split(',',1)[1]
+        #keywords = keywords.split(',',1)[1]
         print(keywords)
         
         #宣告文字分析器
