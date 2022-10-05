@@ -53,6 +53,7 @@ nlu:
     - I'm use [mac OS](os)
     - 我是用[mac os](os)
     - [mac os](os)
+    - [windows](os)
     
 - intent: change_os
   examples: |

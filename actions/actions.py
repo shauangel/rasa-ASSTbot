@@ -25,6 +25,7 @@ from . import StackData
 #head_url='http://localhost:55001/api/'
 head_url='https://soselab.asuscomm.com:55002/api/'
 
+#共同討論
 class ask_return_and_reward(Action):
     def name(self) -> Text:
         return "ask_return_and_reward"
@@ -47,6 +48,7 @@ class ask_return_and_reward(Action):
         dispatcher.utter_message(text=reply)
         return []
         
+#錯誤訊息解答
 class error_message_search(Action):
     def name(self) -> Text:
         return "error_message_search"
@@ -59,7 +61,8 @@ class error_message_search(Action):
         error_message_search_time = int(tracker.get_slot("error_message_search_time"))
         #拿到所需訊息及最後一句使用者輸入
         question_or_error_message = tracker.get_slot("error_message_question")
-        question_or_error_message = question_or_error_message.split(',',1)[1]
+        print(question_or_error_message)
+        #question_or_error_message = question_or_error_message.split(',',1)[1]
         qkey = question_or_error_message.split(' ')
         qkey.append(os)
         qkey.append(pl)
@@ -85,7 +88,7 @@ class error_message_search(Action):
         dispatcher.utter_message(text=reply)
         return [SlotSet("error_message_search_time", float(error_message_search_time+1))]
         
-        
+#共同討論：是否匿名
 class popover_return_incognito(Action):
     def name(self) -> Text:
         return "popover_return_incognito"
@@ -99,7 +102,8 @@ class popover_return_incognito(Action):
                 reply = "popover,否"
         dispatcher.utter_message(text=reply)
         return []
-        
+     
+#共同討論：討論標籤
 class received_discuss_tags(Action):
     def name(self) -> Text:
         return "received_discuss_tags"
@@ -156,17 +160,20 @@ class analyze_and_search(Action):
         print('in analyze_and_search')
         function = tracker.get_slot("function")
         print("pl(programming language):"+tracker.get_slot("pl"))
-        os = tracker.get_slot("os")[0:-13]
-        pl = tracker.get_slot("pl")[0:-13]
+        os = tracker.get_slot("os")
+        pl = tracker.get_slot("pl")
         print("pl(programming language):"+pl)
         if "錯誤訊息" in function:
             #拿到所需訊息及最後一句使用者輸入
             question_or_error_message = tracker.latest_message.get('text')
-            question_or_error_message = question_or_error_message.split(',',1)[1]
+
+            print("analyze_and_search_錯誤訊息: " + question_or_error_message)
+            #question_or_error_message = question_or_error_message.split(',',1)[1]
             qkey = question_or_error_message.split(' ')
             qkey.append(os)
             qkey.append(pl)
             
+            print(qkey)
             #外部搜尋結果（URL）
             resultpage = outerSearch(qkey, 10, 0)
             
@@ -187,10 +194,12 @@ class analyze_and_search(Action):
             #reply += "<a href=\"#\" onclick=\"summary('all')\">點我查看所有答案排名</a>"
             dispatcher.utter_message(text=reply)
             return [Slot("error_message_search_time", 1)]
+
         elif "引導式" in function:
             #拿到所需訊息及最後一句使用者輸入
             question_or_error_message = tracker.latest_message.get('text')
-            question_or_error_message = question_or_error_message.split(',',1)[1]
+            print("analyze_and_search_引導式問答: " + question_or_error_message)
+            #---#question_or_error_message = question_or_error_message.split(',',1)[1]
 #            if question_or_error_message == "是":
 #                question_or_error_message = tracker.get_slot("guided_QA_question").split(',',1)[1]
 #            else:
@@ -204,36 +213,34 @@ class analyze_and_search(Action):
             #加上作業系統與程式語言作為關鍵字
             qkey.append(os)
             qkey.append(pl)
-            print("qkey:")
-            print(qkey)
-            resultpage = outerSearch(qkey, 10, 0)
+
             #內部搜尋
             print("qkey: ", qkey)
-            response = requests.post(head_url+'query_inner_search', json={'keywords':qkey})
+            #---#response = requests.post(head_url+'query_inner_search', json={'keywords':qkey})
     #        print("內部搜尋的結果: ", response.text)
     
             # 慈 START
-            objectAllPost = json.loads(response.text)
-            if objectAllPost["inner_search_result"] != None:
-                postNumber = 1
-                reply = "謝謝您的等待，以下為搜尋結果：<br>"
-                for i in range(0, len(objectAllPost["inner_search_result"])):
-                    postId = objectAllPost["inner_search_result"][i]
-                    singlePostResponse = requests.post(head_url+'query_inner_post', json={'_id':postId})
+            #---#objectAllPost = json.loads(response.text)
+            #---#if objectAllPost["inner_search_result"] != None:
+                #---#postNumber = 1
+                #---#reply = "謝謝您的等待，以下為搜尋結果：<br>"
+                #---#for i in range(0, len(objectAllPost["inner_search_result"])):
+                    #---#postId = objectAllPost["inner_search_result"][i]
+                    #---#singlePostResponse = requests.post(head_url+'query_inner_post', json={'_id':postId})
                     # 轉成object
-                    objectSinglePost = json.loads(singlePostResponse.text)
+                    #---#objectSinglePost = json.loads(singlePostResponse.text)
         #            print("單篇文章結果: ", objectSinglePost)
-                    reply += str(postNumber)
-                    reply += '. <a href="#" onclick="clickChatroomInnerSearch(\''
-                    reply += objectSinglePost["_id"]
-                    reply += '\')">'
-                    reply += objectSinglePost["title"]
-                    reply += '</a><br>'
-                    postNumber += 1
+                    #---#reply += str(postNumber)
+                    #---#reply += '. <a href="#" onclick="clickChatroomInnerSearch(\''
+                    #---#reply += objectSinglePost["_id"]
+                    #---#reply += '\')">'
+                    #---#reply += objectSinglePost["title"]
+                    #---#reply += '</a><br>'
+                    #---#postNumber += 1
                 
         #        print("reply的結果: "+reply);
-            else:
-                reply = ""
+            #---#else:
+                #---#reply = ""
             # 慈 END
             
             #外部搜尋結果（URL）
@@ -243,11 +250,11 @@ class analyze_and_search(Action):
 
             #外部搜尋
             #stackoverflow物件
-            stack_items = StackData.parseStackData(resultpage)
+            #---#stack_items = StackData.parseStackData(resultpage)
             ######假資料～～～～～
             
-            #with open("DATA_test.json", "r", encoding="utf-8") as f:
-            #    stack_items = json.load(f)
+            with open("DATA_test.json", "r", encoding="utf-8") as f:
+                stack_items = json.load(f)
                 
             raw_data = [" ".join([item['question']['abstract'], " ".join([ans['abstract'] for ans in item['answers']])]) for item in stack_items ]
             #取得block排名
@@ -258,22 +265,22 @@ class analyze_and_search(Action):
                 for ans in i['answers']:
                     ans['abstract'] = str(textAnalyzer.textSummarization(ans['abstract']))
                     
-            temp_data_id_list = requests.post(head_url + 'insert_cache', json={'data' : stack_items, 'type' : "temp_data"})
-            block_rank_id = requests.post(head_url + 'insert_cache', json={'data': result, 'type' : "blocks_rank"})
+            #---#temp_data_id_list = requests.post(head_url + 'insert_cache', json={'data' : stack_items, 'type' : "temp_data"})
+            #---#block_rank_id = requests.post(head_url + 'insert_cache', json={'data': result, 'type' : "blocks_rank"})
 
-            print(temp_data_id_list.text)
-            print(block_rank_id.text)
-            t_data_list = json.loads(temp_data_id_list.text)
-            blocks = json.loads(block_rank_id.text)
+            #---#print(temp_data_id_list.text)
+            #---#print(block_rank_id.text)
+            #---#t_data_list = json.loads(temp_data_id_list.text)
+            #---#blocks = json.loads(block_rank_id.text)
 
             #每篇title
             result_title = [item['question']['title'] for item in stack_items]
 
-            reply += "謝謝您的等待，以下為搜尋結果的資料摘要："
-            for i in range(0, len(t_data_list)):
-                reply += ("<br>" + str(i+1) + ".<a href=\"#\" onclick=\"summary('" + t_data_list[i] + "')\">" + result_title[i] + "</a>")
-            reply += "<br>點選摘要連結可顯示內容。<br>"
-            reply += "<a href=\"#\" onclick=\"rank('" + blocks[0] + "')\">點我查看所有答案排名</a>"
+            reply = "謝謝您的等待，以下為搜尋結果的資料摘要："
+            #---#for i in range(0, len(t_data_list)):
+                #---#reply += ("<br>" + str(i+1) + ".<a href=\"#\" onclick=\"summary('" + t_data_list[i] + "')\">" + result_title[i] + "</a>")
+            #---#reply += "<br>點選摘要連結可顯示內容。<br>"
+            #---#reply += "<a href=\"#\" onclick=\"rank('" + blocks[0] + "')\">點我查看所有答案排名</a>"
             reply += "<br><br>是否要繼續搜尋？"
             dispatcher.utter_message(text=reply)
             
@@ -292,6 +299,9 @@ class analyze_and_search(Action):
             
             
 #給user選關鍵字
+
+
+#選擇關鍵字
 class select_keyword(Action):
     def name(self) -> Text:
         return "select_keyword"
@@ -343,16 +353,16 @@ class outer_search(Action):
             
         qkey = keywords.split(',')
         #外部搜尋結果（URL）
-        resultpage = outerSearch(qkey, 10, 0)
-        for url in resultpage:
-            print(url)
+        #---#resultpage = outerSearch(qkey, 10, 0)
+        #---#for url in resultpage:
+        #---#    print(url)
         #外部搜尋
         #stackoverflow物件
-        stack_items = StackData.parseStackData(resultpage)
+        #---#stack_items = StackData.parseStackData(resultpage)
         
         #假資料～～～～～
-        #with open("DATA_test.json", "r", encoding="utf-8") as f:
-        #    stack_items = json.load(f)
+        with open("DATA_test.json", "r", encoding="utf-8") as f:
+            stack_items = json.load(f)
         
         raw_data = [ " ".join([item['question']['abstract'], " ".join([ans['abstract'] for ans in item['answers']])]) for item in stack_items ]
         #取得block排名
@@ -363,24 +373,25 @@ class outer_search(Action):
             for ans in i['answers']:
                 ans['abstract'] = str(textAnalyzer.textSummarization(ans['abstract']))
                     
-        temp_data_id_list = requests.post(head_url + 'insert_cache', json={'data' : stack_items[0:5], 'type' : "temp_data"}, verify=False)
-        block_rank_id = requests.post(head_url + 'insert_cache', json={'data': result, 'type' : "blocks_rank"}, verify=False)
+        #---#temp_data_id_list = requests.post(head_url + 'insert_cache', json={'data' : stack_items[0:5], 'type' : "temp_data"}, verify=False)
+        #---#block_rank_id = requests.post(head_url + 'insert_cache', json={'data': result, 'type' : "blocks_rank"}, verify=False)
         
-        print(temp_data_id_list.text)
-        print(block_rank_id.text)
-        t_data_list = json.loads(temp_data_id_list.text)
-        blocks = json.loads(block_rank_id.text)
+        #---#print(temp_data_id_list.text)
+        #---#print(block_rank_id.text)
+        #---#t_data_list = json.loads(temp_data_id_list.text)
+        #---#blocks = json.loads(block_rank_id.text)
         
         #每篇title
         result_title = [item['question']['title'] for item in stack_items]
+        result_title = "\n".join(result_title)
         
-        reply = "謝謝您的等待，以下為搜尋結果的資料摘要："
-        for i in range(0, len(t_data_list)):
-            reply += ("<br>" + str(i+1) + ".<a href=\"#\" onclick=\"summary('" + t_data_list[i] + "')\">" + result_title[i] + "</a>")
-        reply += "<br>點選摘要連結可顯示內容。<br>"
-        reply += "<a href=\"#\" onclick=\"rank('" + blocks[0] + "')\">點我查看所有答案排名</a>"
-        reply += "<br><br>是否要繼續搜尋？"
+        reply = "謝謝您的等待，以下為搜尋結果的資料摘要：" + result_title
+        #---#for i in range(0, len(t_data_list)):
+        #---#    reply += ("<br>" + str(i+1) + ".<a href=\"#\" onclick=\"summary('" + t_data_list[i] + "')\">" + result_title[i] + "</a>")
+        #---#reply += "<br>點選摘要連結可顯示內容。<br>"
+        #---#reply += "<a href=\"#\" onclick=\"rank('" + blocks[0] + "')\">點我查看所有答案排名</a>"
+        #---#reply += "<br><br>是否要繼續搜尋？"
         
-        print("繼續搜尋reply：", reply)
+        #---#print("繼續搜尋reply：", reply)
         dispatcher.utter_message(text=reply)
         return []
