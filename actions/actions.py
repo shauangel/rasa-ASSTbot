@@ -199,7 +199,7 @@ class analyze_and_search(Action):
 
             #reply += "<a href=\"#\" onclick=\"summary('all')\">點我查看所有答案排名</a>"
             dispatcher.utter_message(text=reply)
-            return [Slot("error_message_search_time", 1)]
+            return [SlotSet("error_message_search_time", 1)]
 
         elif "引導式" in function:
             #拿到所需訊息及最後一句使用者輸入
