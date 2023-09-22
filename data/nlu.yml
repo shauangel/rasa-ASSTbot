@@ -16,25 +16,25 @@ nlu:
    
 - regex: function
   examples: |
-   - \b引導式\b
-   - .*引導式.*
-   - \b錯誤訊息\b
-   - .*錯誤訊息.*
-   - \b共同討論\b
-   - .*共同討論.*
+   - \bguiding QA\b
+   - .*guiding QA.*
+   - \berror message\b
+   - .*error message.*
+   - \bdiscussion\b
+   - .*discussion.*
 
    
 - lookup: os
   examples: |
-   - mac_OS作業系統
-   - windows作業系統
-   - linux作業系統
+   - mac_OS system
+   - windows system
+   - linux system
    
 - lookup: pl
   examples: |
-   - python程式語言
-   - java程式語言
-   - c語言程式語言
+   - python programming language
+   - java programming language
+   - c programming language
    
 - regex: question_or_error_message
   examples: |
@@ -46,28 +46,34 @@ nlu:
 
 - intent: say_function
   examples: |
-    - [引導式](function)
+    - I want to use the [guiding QA](function) service
+    - [guiding QA](function)
 
 - intent: say_os
   examples: |
-    - I'm use [mac OS](os)
-    - 我是用[mac os](os)
+    - I use [mac OS](os)
+    - I'm using [mac os](os)
     - [mac os](os)
     - [windows](os)
     
 - intent: change_os
   examples: |
-    - 我要修改作業系統
+    - I want to change my OS
+    - modify OS
+    - change OS
 
 - intent: say_pl
   examples: |
-    - I'm use [python](pl)
-    - 我是用[python](pl)
+    - I use [python](pl)
+    - I'm using [python](pl)
     - [python](pl)
     
 - intent: change_pl
   examples: |
-    - 我要修改程式語言
+    - I want to change my programming language
+    - changing programming language
+    - modify programming language
+    - change language
     
 - intent: say_question_or_error_message
   examples: |
@@ -80,11 +86,11 @@ nlu:
 - intent: affirm
   examples: |
     - continue search
-    - 繼續
+    - continue
     - satisfied
-    - 好
-    - 是
-    - 要
+    - good
+    - great
+    - yes
     - ok
     - 可以
     - 對
@@ -95,8 +101,10 @@ nlu:
 - intent: deny
   examples: |
     - not continue search
-    - 停止
+    - stop
     - not satisfied
+    - bad response
+    - not goog enough
     - 不滿意
     - 不要
     - 不好

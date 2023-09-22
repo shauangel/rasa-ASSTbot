@@ -10,7 +10,9 @@ stories:
   - action: utter_welcome
   - intent: say_function
     entities:
-    - function
+    - function: guiding QA
+  - slot_was_set:
+    - function: guiding QA
   - action: fill_slot
   - checkpoint: reply_fill_slot
 
@@ -37,7 +39,7 @@ stories:
     - pl
   - action: fill_slot
   - checkpoint: reply_fill_slot
-  
+
 # 使用者問題 slot_filling
 # 四、請使用者描述問題 or 錯誤訊息 -> 搜尋
 - story: fill_slot_message
@@ -78,7 +80,7 @@ stories:
 - story: search_affirm
   steps:
   - checkpoint: check_continue_search
-#  - action: utter_detect_stroy
+#  - action: utter_detect_story
   - intent: affirm
   - action: analyze_and_search
   - intent: say_keywords
@@ -89,7 +91,7 @@ stories:
 - story: search_deny
   steps:
   - checkpoint: check_continue_search
-#  - action: utter_detect_stroy
+#  - action: utter_detect_story
   - intent: deny
   - action: utter_ask_satisfied
   - checkpoint: check_satisfied

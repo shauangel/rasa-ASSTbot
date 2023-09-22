@@ -15,16 +15,16 @@ from rasa_sdk.executor import CollectingDispatcher
 import random
 import requests
 import json
-#加入文字分析模組&外部搜尋模組
+# 加入文字分析模組&外部搜尋模組
 from . import TextAnalyze
 from .OuterSearch import outerSearch
-##摘要
+# 摘要
 from . import StackData
 
-#head_url = 'http://soselab.asuscomm.com:55001/api/'
-#head_url='http://localhost:55001/api/'
-head_url='https://soselab.asuscomm.com:55002/api/'
-
+# head_url = 'http://soselab.asuscomm.com:55001/api/'
+# head_url='http://localhost:55001/api/'
+head_url = 'https://soselab.asuscomm.com:55002/api/'
+"""
 #共同討論
 class ask_return_and_reward(Action):
     def name(self) -> Text:
@@ -122,9 +122,12 @@ class received_discuss_tags(Action):
         reply = "接收到了 "+selected_tags_name+" 標籤。請說明你想討論的問題。"
         dispatcher.utter_message(text=reply)
         return []
-        
-#將整句話(問題描述、錯誤訊息)填入slot
-class fill_slot(Action):
+   
+"""
+# 將整句話(問題描述、錯誤訊息)填入slot
+
+
+class FillSlot(Action):
     def name(self) -> Text:
         return "fill_slot"
 
@@ -133,24 +136,27 @@ class fill_slot(Action):
         os = tracker.get_slot("os")
         pl = tracker.get_slot("pl")
         
-        if os!=None and pl!=None:
-            if "錯誤訊息" in function:
-                reply = "請貼上您的錯誤訊息"
-            elif "引導式" in function:
-                reply = "請描述您遇到的問題"
+        if os is not None and pl is not None:
+            if "error message" in function:
+                reply = "Please paste your error message here: "
+            elif "guiding QA" in function:
+                reply = "Please describe your question here: "
             else:
-                reply = "你的function抓不到"
+                reply = "no such service :("
         else:
-            if "共同討論" in function:
+            if "discussion" in function:
                 reply = "是否匿名?"
             else:
-                if pl == None:
-                    reply = "請問您使用的是什麼程式語言？<br>若之後要修改，請輸入「我要更改程式語言」"
-                elif os == None:
-                    reply = "請問您使用的是什麼作業系統？<br>若之後要修改，請輸入「我要更改作業系統」"
+                if pl is None:
+                    reply = "Which programming language are you using?<br>" \
+                            "You can change it later by entering 'change language'"
+                elif os is None:
+                    reply = "Which operating system are you using?" \
+                            "<br>You can change it later by entering 'change OS'"
         
         dispatcher.utter_message(text=reply)
         return []
+
 
 #分析並搜尋並記下使用者輸入及相關關鍵字（第一次搜尋）
 class analyze_and_search(Action):
@@ -193,7 +199,7 @@ class analyze_and_search(Action):
 
             #reply += "<a href=\"#\" onclick=\"summary('all')\">點我查看所有答案排名</a>"
             dispatcher.utter_message(text=reply)
-            return [Slot("error_message_search_time", 1)]
+            return [SlotSet("error_message_search_time", 1)]
 
         elif "引導式" in function:
             #拿到所需訊息及最後一句使用者輸入
