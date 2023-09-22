@@ -56,28 +56,28 @@ slots:
       entity: keywords
 
 responses:
-  utter_detect_stroy:
-  - text: "有進入stroy"
+  utter_detect_story:
+  - text: "starts the story"
   utter_affirm_satisfied:
-  - text: "你現在很滿意"
+  - text: "You are satisfied now"
   
   utter_affirm_notsatisfied:
-  - text: "你現在「不」滿意"
+  - text: "You are not satisfied"
   
   utter_check_function:
-  - text: "您選擇的功能為{function}"
+  - text: "Your chosen function is {function}"
   
   utter_ask_func:
-  - text: "請問你想選擇哪個功能呢？"
+  - text: "Which service do you want to start?"
   
   utter_welcome:
-  - text: "我們能提供的功能有<br>1. 錯誤訊息解答（直接複製錯誤訊息即可）<br>2. 引導式問答（用文字描述您遇到的問題）<br>若未能解決問題也可以使用共同討論功能<br><br>請問你想選擇哪個功能呢？"
+  - text: "The services we provide: <br>1. Error message solving (Please paste your error message directly)<br>2. Guiding QA (Please explain your question.)<br>If your question still not fixed, you can discuss with others using the Collaborative Discussion service.<br><br>Please enter the service you want."
   
   utter_ask_os:
-  - text: "請問您使用的是什麼作業系統？<br>若之後要修改，請輸入「我要更改作業系統」？"
+  - text: "Which operating system are you using?<br>You can change it later by entering 'change OS'"
 
   utter_ask_pl:
-  - text: "請問您使用的是什麼程式語言？<br>若之後要修改，請輸入「我要更改程式語言」？"
+  - text: "Which operating system are you using?<br>You can change it later by entering 'change programming language'"
 #
 #  utter_ask_message:
 #  - text: "好的，請貼上您的錯誤訊息"

@@ -15,7 +15,7 @@ action_endpoint:
   url: "http://localhost:5055/webhook"
 
 # Tracker store which is used to store the conversations.
-# By default the conversations are stored in memory.
+# By default, the conversations are stored in memory.
 # https://rasa.com/docs/rasa/tracker-stores
 
 #tracker_store:
@@ -24,10 +24,10 @@ action_endpoint:
 #    port: <port of your redis instance, usually 6379>
 #    db: <number of your database within redis, e.g. 0>
 #    password: <password used for authentication>
-#    use_ssl: <whether or not the communication is encrypted, default false>
+#    use_ssl: <whether the communication is encrypted, default false>
 
 #tracker_store:
-#    type: mongod
+#    type: mongodb
 #    url: <url to your mongo instance, e.g. mongodb://localhost:27017>
 #    db: <name of the db within your mongo instance, e.g. rasa>
 #    username: <username used for authentication>
