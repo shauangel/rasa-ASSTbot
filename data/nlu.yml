@@ -16,8 +16,8 @@ nlu:
    
 - regex: function
   examples: |
-   - \bguiding QA\b
-   - .*guiding QA.*
+   - \bguiding qa\b
+   - .*guiding qa.*
    - \berror message\b
    - .*error message.*
    - \bdiscussion\b
@@ -26,7 +26,7 @@ nlu:
    
 - lookup: os
   examples: |
-   - mac_OS system
+   - mac os system
    - windows system
    - linux system
    
