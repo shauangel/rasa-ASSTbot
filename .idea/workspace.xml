@@ -5,8 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c021d-8364-4a94-a698-087919544a08" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmp5_7e__xn/synonyms.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmp7td8h3c4/regex.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpf65dvm3g/synonyms.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmplnoj7los/regex.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.data_example.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.entity_tag_specs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.index_label_id_mapping.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.label_data.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.sparse_feature_sizes.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.tf_model.data-00000-of-00001" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/DIETClassifier.tf_model.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpnxzmsm35/checkpoint" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmptdifs1nr/oov_words.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmptdifs1nr/vocabularies.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpu9ov3k82/patterns.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.rasa/cache/tmpzntfzb9j/feature_to_idx_dict.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang_mod.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/20230925-142331-respectful-heater.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/20230925-143448-simple-hypotenuse.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test-webpage/gpt-test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rasa/cache/cache.db" beforeDir="false" afterPath="$PROJECT_DIR$/.rasa/cache/cache.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actions/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/actions/actions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nlu.yml" beforeDir="false" afterPath="$PROJECT_DIR$/data/nlu.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-webpage/rasa.py" beforeDir="false" afterPath="$PROJECT_DIR$/test-webpage/rasa.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,19 +51,27 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2SPstckbrh3zePtRLQYfk9dMSPN" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/shauangel/PycharmProjects/rasa-ASSTbot&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/shauangel/PycharmProjects/rasa-ASSTbot",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1695361578927</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update">
+      <created>1695361694340</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695361694340</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -83,6 +122,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="update" />
     <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>

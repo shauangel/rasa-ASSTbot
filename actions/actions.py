@@ -124,9 +124,9 @@ class received_discuss_tags(Action):
         return []
    
 """
+
+
 # 將整句話(問題描述、錯誤訊息)填入slot
-
-
 class FillSlot(Action):
     def name(self) -> Text:
         return "fill_slot"
@@ -137,11 +137,12 @@ class FillSlot(Action):
         pl = tracker.get_slot("pl")
         
         if os is not None and pl is not None:
-            if "error message" in function:
+            if "error message" in function.lower():
                 reply = "Please paste your error message here: "
-            elif "guiding QA" in function:
+            elif "guiding qa" in function.lower():
                 reply = "Please describe your question here: "
             else:
+                print(function)
                 reply = "no such service :("
         else:
             if "discussion" in function:
@@ -158,10 +159,11 @@ class FillSlot(Action):
         return []
 
 
-#分析並搜尋並記下使用者輸入及相關關鍵字（第一次搜尋）
-class analyze_and_search(Action):
+# 分析並搜尋並記下使用者輸入及相關關鍵字（第一次搜尋）
+class AnalyzeAndSearch(Action):
     def name(self) -> Text:
         return "analyze_and_search"
+
     def run(self, dispatcher, tracker, domain) -> List[Dict[Text, Any]]:
         print('in analyze_and_search')
         function = tracker.get_slot("function")
@@ -169,7 +171,7 @@ class analyze_and_search(Action):
         os = tracker.get_slot("os")
         pl = tracker.get_slot("pl")
         print("pl(programming language):"+pl)
-        if "錯誤訊息" in function:
+        if "error message" in function.lower():
             #拿到所需訊息及最後一句使用者輸入
             question_or_error_message = tracker.latest_message.get('text')
 
@@ -200,12 +202,11 @@ class analyze_and_search(Action):
             #reply += "<a href=\"#\" onclick=\"summary('all')\">點我查看所有答案排名</a>"
             dispatcher.utter_message(text=reply)
             return [SlotSet("error_message_search_time", 1)]
-
-        elif "引導式" in function:
-            #拿到所需訊息及最後一句使用者輸入
+        elif "guiding qa" in function.lower():
+            # 拿到所需訊息及最後一句使用者輸入
             question_or_error_message = tracker.latest_message.get('text')
             print("analyze_and_search_引導式問答: " + question_or_error_message)
-            #---#question_or_error_message = question_or_error_message.split(',',1)[1]
+            # ---#question_or_error_message = question_or_error_message.split(',',1)[1]
 #            if question_or_error_message == "是":
 #                question_or_error_message = tracker.get_slot("guided_QA_question").split(',',1)[1]
 #            else:
@@ -302,8 +303,7 @@ class analyze_and_search(Action):
             #！！！將關鍵字及更多關鍵字存入slot
             return [SlotSet("keywords", ','.join(qkey))]
             
-            
-            
+
 #給user選關鍵字
 
 
