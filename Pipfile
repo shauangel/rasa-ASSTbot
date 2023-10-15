@@ -12,6 +12,7 @@ spacy-langdetect = "*"
 bs4 = "==0.0.1"
 google = "*"
 requests = "==2.28.2"
+config = "*"
 
 [dev-packages]
 
