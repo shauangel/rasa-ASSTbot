@@ -1,0 +1,42 @@
+[
+  {
+    "name": "function",
+    "pattern": ".*discussion.*"
+  },
+  {
+    "name": "function",
+    "pattern": ".*error message.*"
+  },
+  {
+    "name": "function",
+    "pattern": ".*guiding qa.*"
+  },
+  {
+    "name": "function",
+    "pattern": "\\bdiscussion\\b"
+  },
+  {
+    "name": "function",
+    "pattern": "\\berror message\\b"
+  },
+  {
+    "name": "function",
+    "pattern": "\\bguiding qa\\b"
+  },
+  {
+    "name": "keywords",
+    "pattern": "keywords .*"
+  },
+  {
+    "name": "question_or_error_message",
+    "pattern": "question_or_error_message .*"
+  },
+  {
+    "name": "os",
+    "pattern": "(\\bmac\\ os\\ system\\b|\\bwindows\\ system\\b|\\blinux\\ system\\b)"
+  },
+  {
+    "name": "pl",
+    "pattern": "(\\bpython\\ programming\\ language\\b|\\bjava\\ programming\\ language\\b|\\bc\\ programming\\ language\\b)"
+  }
+]

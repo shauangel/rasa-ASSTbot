@@ -16,33 +16,35 @@ nlu:
    
 - regex: function
   examples: |
-   - \bguiding qa\b
-   - .*guiding qa.*
-   - \berror message\b
-   - .*error message.*
-   - \bdiscussion\b
-   - .*discussion.*
+    - \bguiding qa\b
+    - .*guiding qa.*
+    - \berror message\b
+    - .*error message.*
+    - \bdiscussion\b
+    - .*discussion.*
 
    
 - lookup: os
   examples: |
-   - mac os system
-   - windows system
-   - linux system
+    - mac os system
+    - windows system
+    - linux system
    
 - lookup: pl
   examples: |
-   - python programming language
-   - java programming language
-   - c programming language
+    - python programming language
+    - java programming language
+    - c programming language
    
 - regex: question_or_error_message
   examples: |
-   - question_or_error_message .*
+    - question_or_error_message .*
 
 - intent: start
   examples: |
-   - start
+    - start
+    - Hi
+    - Hello
 
 - intent: say_function
   examples: |
@@ -78,10 +80,12 @@ nlu:
 - intent: say_question_or_error_message
   examples: |
     - [my error message is: ...](question_or_error_message)
+    - [my question is: ...](question_or_error_message)
     
 - intent: say_keywords
   examples: |
     - [my keywords is: ...](keywords)
+    - [the keyword list is: ...](keywords)
     
 - intent: affirm
   examples: |
@@ -116,14 +120,5 @@ nlu:
     - 沒
     - 別
     - 否
-    
-- intent: say_satisfied
-  examples: |
-    - satisfied
-    - 滿意
-    
-- intent: say_not_satisfied
-  examples: |
-    - not satisfied
-    - 不滿意
+
 

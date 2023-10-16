@@ -44,71 +44,71 @@ stories:
 # 四、請使用者描述問題 or 錯誤訊息 -> 搜尋
 - story: fill_slot_message
   steps:
-  - checkpoint: reply_fill_slot
-  - intent: say_question_or_error_message
+    - checkpoint: reply_fill_slot
+    - intent: say_question_or_error_message
 #    entities:
 #    - question_or_error_message
-#  - action: utter_check_message
-  - action: analyze_and_search
-  - intent: say_keywords
-  - action: outer_search
-  - checkpoint: check_continue_search
+#  - action: utter_check_message\
+    - action: analyze_and_search
+    - intent: say_keywords
+    - action: outer_search
+    - checkpoint: check_continue_search
 
 # 修改作業系統
 - story: change_slot_os
   steps:
-  - intent: change_os
-  - action: utter_ask_os #這裡不能用fill_slot，因為本來就有值了
-  - intent: say_os
-    entities:
-    - os
-  - action: fill_slot
-  - checkpoint: reply_fill_slot
+    - intent: change_os
+    - action: utter_ask_os #這裡不能用fill_slot，因為本來就有值了
+    - intent: say_os
+      entities:
+        - os
+    - action: fill_slot
+    - checkpoint: reply_fill_slot
   
 # 修改程式語言
 - story: change_slot_pl
   steps:
-  - intent: change_pl
-  - action: utter_ask_pl #這裡不能用fill_slot，因為本來就有值了
-  - intent: say_pl
-    entities:
-    - pl
-  - action: fill_slot
-  - checkpoint: reply_fill_slot
+    - intent: change_pl
+    - action: utter_ask_pl #這裡不能用fill_slot，因為本來就有值了
+    - intent: say_pl
+      entities:
+        - pl
+    - action: fill_slot
+    - checkpoint: reply_fill_slot
 
 # 五-1、繼續搜尋
 - story: search_affirm
   steps:
-  - checkpoint: check_continue_search
-#  - action: utter_detect_story
-  - intent: affirm
-  - action: analyze_and_search
-  - intent: say_keywords
-  - action: outer_search
-  - checkpoint: check_continue_search
+    - checkpoint: check_continue_search
+  #  - action: utter_detect_story
+    - intent: affirm
+    - action: analyze_and_search
+    - intent: say_keywords
+    - action: outer_search
+    - checkpoint: check_continue_search
 
 # 五-2、停止搜尋
 - story: search_deny
   steps:
-  - checkpoint: check_continue_search
-#  - action: utter_detect_story
-  - intent: deny
-  - action: utter_ask_satisfied
-  - checkpoint: check_satisfied
+    - checkpoint: check_continue_search
+  #  - action: utter_detect_story
+    - intent: deny
+    - action: utter_ask_satisfied
+    - checkpoint: check_satisfied
   
 # 六-1、滿意
 - story: satisfied_affirm
   steps:
-  - checkpoint: check_satisfied
-  - intent: affirm
-  #- action: utter_affirm_satisfied
-  - action: utter_finish
+    - checkpoint: check_satisfied
+    - intent: affirm
+    #- action: utter_affirm_satisfied
+    - action: utter_finish
   
 # 六-2、不滿意
 - story: satisfied_deny
   steps:
-  - checkpoint: check_satisfied
-  - intent: deny
-  #- action: utter_affirm_notsatisfied
-  - action: utter_finish
+    - checkpoint: check_satisfied
+    - intent: deny
+    #- action: utter_affirm_notsatisfied
+    - action: utter_finish
 

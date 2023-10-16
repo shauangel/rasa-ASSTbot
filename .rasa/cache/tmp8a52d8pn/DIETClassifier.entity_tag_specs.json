@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-function",
+      "2": "I-function",
+      "3": "L-function",
+      "4": "U-function",
+      "5": "B-keywords",
+      "6": "I-keywords",
+      "7": "L-keywords",
+      "8": "U-keywords",
+      "9": "B-os",
+      "10": "I-os",
+      "11": "L-os",
+      "12": "U-os",
+      "13": "B-pl",
+      "14": "I-pl",
+      "15": "L-pl",
+      "16": "U-pl",
+      "17": "B-question_or_error_message",
+      "18": "I-question_or_error_message",
+      "19": "L-question_or_error_message",
+      "20": "U-question_or_error_message",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-function": 1,
+      "I-function": 2,
+      "L-function": 3,
+      "U-function": 4,
+      "B-keywords": 5,
+      "I-keywords": 6,
+      "L-keywords": 7,
+      "U-keywords": 8,
+      "B-os": 9,
+      "I-os": 10,
+      "L-os": 11,
+      "U-os": 12,
+      "B-pl": 13,
+      "I-pl": 14,
+      "L-pl": 15,
+      "U-pl": 16,
+      "B-question_or_error_message": 17,
+      "I-question_or_error_message": 18,
+      "L-question_or_error_message": 19,
+      "U-question_or_error_message": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]
